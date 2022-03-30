@@ -20,6 +20,13 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
      * The attributes that are not mass assignable.
      *
      * @var array<int, string>
