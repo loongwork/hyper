@@ -51,6 +51,7 @@ class CreateUser extends Command
         if ($this->confirm('Do you want to create the user?')) {
             $user->save();
             $this->info('User created successfully.');
+            $this->info('User ID: ' . $user->id);
         } else {
             $this->info('User creation cancelled.');
         }
