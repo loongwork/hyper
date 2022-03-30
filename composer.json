@@ -18,6 +18,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
+        "brainmaestro/composer-git-hooks": "dev-prepare-for-symfony-6",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
         "laravel/sail": "^1.0.1",
@@ -49,6 +50,15 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer cs-fix -- --diff"
+            ],
+            "pre-push": [
+                "composer cs-fix -- --diff",
+                "composer analyse"
+            ]
         }
     },
     "scripts": {
@@ -70,5 +80,11 @@
         ],
         "analyse": "phpstan analyse --memory-limit 300M",
         "cs-fix": "php-cs-fixer fix $1"
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/Jubeki/composer-git-hooks"
+        }
+    ]
 }
