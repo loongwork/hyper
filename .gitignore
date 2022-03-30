@@ -13,3 +13,5 @@ yarn-error.log
 /.idea
 /.vscode
 .vercel
+.phpstorm.meta.php
+_ide_helper.php
