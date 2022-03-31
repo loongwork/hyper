@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Procedures\TennisProcedure;
+use App\Http\Procedures\UserProcedure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], static function () {
-    Route::rpc('endpoint', [TennisProcedure::class])->name('rpc.endpoint');
+    Route::rpc('endpoint', [
+        TennisProcedure::class,
+        UserProcedure::class,
+    ])->name('rpc.endpoint');
 });
