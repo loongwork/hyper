@@ -7,6 +7,7 @@ namespace App\Console\Commands;
 use App\Server\VelvetWebsocketServer;
 use Illuminate\Console\Command;
 use Swlib\SaberGM;
+use Swoole\Atomic;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Channel;
 use Swoole\Coroutine\Redis;
@@ -37,17 +38,19 @@ class StartVelvetClient extends Command
      */
     public function handle(): int
     {
+        $status = new Atomic(0);
+
         $this->info('Starting the Velvet client...');
 
-        run(function () {
+        run(function () use ($status) {
             $chan = new Channel(5);
 
-            $this->wsCid = Coroutine::create(function () use ($chan) {
+            $this->wsCid = Coroutine::create(function () use ($chan, $status) {
                 Coroutine::sleep(1);
                 $this->info('Starting the Websocket client...');
                 $server = new VelvetWebsocketServer();
                 $ws = SaberGM::websocket('ws://echo.websocket.events');
-                while (true) {
+                while ($status->get() === 0) {
                     $data = $chan->pop(0.2);
                     if ($data) {
                         $ws->push($data);
@@ -64,6 +67,7 @@ class StartVelvetClient extends Command
                             if ($server->onConnected() === false) {
                                 $this->error('Failed to connect to the server');
                                 $ws->close();
+                                $status->set(-1);
                             } else {
                                 $this->info('Connected to the server');
                             }
@@ -76,7 +80,7 @@ class StartVelvetClient extends Command
                 }
             });
 
-            $this->redisCid = Coroutine::create(function () use ($chan) {
+            $this->redisCid = Coroutine::create(function () use ($chan, $status) {
                 Coroutine::sleep(1);
                 $this->info('Starting the Redis client...');
 
@@ -84,7 +88,7 @@ class StartVelvetClient extends Command
                 $redis->connect('redis', 6379);
                 $redis->select(0);
                 if ($redis->subscribe(['lwhyper_database_velvet'])) {
-                    while ($msg = $redis->recv()) {
+                    while ($status->get() === 0 && $msg = $redis->recv()) {
                         // msg是一个数组, 包含以下信息
                         // $type # 返回值的类型：显示订阅成功
                         // $name # 订阅的频道名字 或 来源频道名字
@@ -101,8 +105,10 @@ class StartVelvetClient extends Command
                         Coroutine::sleep(0.5);
                     }
                 }
+                $redis->close();
             });
         });
+        $status->set(-1);
 
         return self::SUCCESS;
     }
