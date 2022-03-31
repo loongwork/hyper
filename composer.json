@@ -15,6 +15,7 @@
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.7",
         "sajya/server": "^5.0",
+        "swlib/saber": "^1.0",
         "textalk/websocket": "^1.5"
     },
     "require-dev": {
@@ -27,7 +28,8 @@
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^1.0",
+        "swoole/ide-helper": "@dev"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

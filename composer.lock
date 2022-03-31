@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aa21a3df3cf15dd25d30af30d8a3ac8",
+    "content-hash": "25a7efbdfe6f916416c5bd3921ef4a1d",
     "packages": [
         {
             "name": "brick/math",
@@ -3189,6 +3189,172 @@
                 }
             ],
             "time": "2022-02-10T10:16:58+00:00"
+        },
+        {
+            "name": "swlib/http",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swlib/http.git",
+                "reference": "e97d9d05b741d4ee7ef58824a280acf983354d5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swlib/http/zipball/e97d9d05b741d4ee7ef58824a280acf983354d5e",
+                "reference": "e97d9d05b741d4ee7ef58824a280acf983354d5e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/http-message": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Swlib\\Http\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "twosee",
+                    "email": "twose@qq.com"
+                }
+            ],
+            "description": "Swlib-HTTP base class repository, PSR implementation",
+            "keywords": [
+                "http",
+                "php",
+                "psr7",
+                "swoole"
+            ],
+            "support": {
+                "issues": "https://github.com/swlib/http/issues",
+                "source": "https://github.com/swlib/http/tree/v1.x"
+            },
+            "time": "2020-08-15T10:36:45+00:00"
+        },
+        {
+            "name": "swlib/saber",
+            "version": "v1.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swlib/saber.git",
+                "reference": "24034ea70d64063cc9032c4aa08cb888995df190"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swlib/saber/zipball/24034ea70d64063cc9032c4aa08cb888995df190",
+                "reference": "24034ea70d64063cc9032c4aa08cb888995df190",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "swlib/http": "^1.0",
+                "swlib/util": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/include/functions.php"
+                ],
+                "psr-4": {
+                    "Swlib\\Saber\\": "src"
+                },
+                "classmap": [
+                    "src/Saber.php",
+                    "src/SaberGM.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "twosee",
+                    "email": "twose@qq.com"
+                }
+            ],
+            "description": "Swoole coroutine HTTP client",
+            "keywords": [
+                "ajax",
+                "axios",
+                "client",
+                "coroutine",
+                "curl",
+                "http",
+                "php",
+                "psr7",
+                "requests",
+                "swoole"
+            ],
+            "support": {
+                "issues": "https://github.com/swlib/saber/issues",
+                "source": "https://github.com/swlib/saber/tree/v1.0.18"
+            },
+            "time": "2021-04-20T06:28:59+00:00"
+        },
+        {
+            "name": "swlib/util",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swlib/util.git",
+                "reference": "300f551753702f5bfcbfb814d53bdbf057719a43"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swlib/util/zipball/300f551753702f5bfcbfb814d53bdbf057719a43",
+                "reference": "300f551753702f5bfcbfb814d53bdbf057719a43",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swlib\\Util\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "twosee",
+                    "email": "twose@qq.com"
+                }
+            ],
+            "description": "Swlib Toolkit",
+            "keywords": [
+                "php",
+                "swlib",
+                "swoole",
+                "util"
+            ],
+            "support": {
+                "issues": "https://github.com/swlib/util/issues",
+                "source": "https://github.com/swlib/util/tree/v1.0.3"
+            },
+            "time": "2020-08-24T10:00:58+00:00"
         },
         {
             "name": "symfony/console",
@@ -9198,6 +9364,48 @@
             "time": "2022-03-21T07:13:26+00:00"
         },
         {
+            "name": "swoole/ide-helper",
+            "version": "4.8.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swoole/ide-helper.git",
+                "reference": "dd87843a5040831f9ad40b68fb57879b7342ef61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/dd87843a5040831f9ad40b68fb57879b7342ef61",
+                "reference": "dd87843a5040831f9ad40b68fb57879b7342ef61",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Team Swoole",
+                    "email": "team@swoole.com"
+                }
+            ],
+            "description": "IDE help files for Swoole.",
+            "support": {
+                "issues": "https://github.com/swoole/ide-helper/issues",
+                "source": "https://github.com/swoole/ide-helper/tree/4.8.8"
+            },
+            "funding": [
+                {
+                    "url": "https://gitee.com/swoole/swoole?donate=true",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/swoole",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-17T18:24:39+00:00"
+        },
+        {
             "name": "symfony/filesystem",
             "version": "v6.0.6",
             "source": {
@@ -9443,7 +9651,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "brainmaestro/composer-git-hooks": 20
+        "brainmaestro/composer-git-hooks": 20,
+        "swoole/ide-helper": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -9451,5 +9660,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
