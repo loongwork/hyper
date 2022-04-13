@@ -23,9 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'fawe'], static function () {
     Route::post('upload.php', [Controllers\FaweController::class, 'upload']);
 
-    Route::any('/{any?}', function ($any = 'empty') {
-        dump($any, \request()->all(), \request()->allFiles());
-    });
+    Route::get('/', [Controllers\FaweController::class, 'download']);
 });
 
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], static function () {
