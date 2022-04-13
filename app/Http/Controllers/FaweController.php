@@ -33,7 +33,7 @@ class FaweController extends Controller
         $original_path = sprintf('%s.%s', config('filesystems.disks.oss.bucket'), config('filesystems.disks.oss.endpoint'));
         $path = str_replace($original_path, config('filesystems.disks.oss.cdn_url'), $path);
 
-        return response("文件上传成功，请点击以下链接以下载（二选其一）：{$path}");
+        return response("文件上传成功，请点击以下链接以下载：{$path}\n请忽视下方的链接，那是插件本身的设计缺陷，无法去除。");
     }
 
     public function download(Request $request, string $file = null)
