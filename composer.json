@@ -9,6 +9,7 @@
     ],
     "require": {
         "php": "^8.0.2",
+        "alphasnow/aliyun-oss-laravel": "^4.2",
         "guzzlehttp/guzzle": "^7.2",
         "hidehalo/nanoid-php": "^1.1",
         "laravel/framework": "^9.2",
@@ -19,6 +20,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
+        "beyondcode/laravel-dump-server": "^1.8",
         "brainmaestro/composer-git-hooks": "dev-prepare-for-symfony-6",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.8",
