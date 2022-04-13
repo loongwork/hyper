@@ -36,8 +36,13 @@ class FaweController extends Controller
         return response("文件上传成功，请点击以下链接以下载（二选其一）：{$path}");
     }
 
-    public function download(Request $request)
+    public function download(Request $request, string $file = null)
     {
+        if (!is_null($file)) {
+            return file_get_contents("https://fawe.escraft.net/faweupload/uploads/{$file}");
+//            return Storage::disk('oss')->download("schematics/$file");
+        }
+
         $id = $request->query('key');
         $type = $request->query('type');
 
