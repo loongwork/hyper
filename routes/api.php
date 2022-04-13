@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Procedures\TennisProcedure;
-use App\Http\Procedures\UserProcedure;
+use App\Http\Controllers;
+use App\Http\Procedures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['prefix' => 'fawe'], static function () {
+    Route::post('upload.php', [Controllers\FaweController::class, 'upload']);
+
+    Route::any('/{any?}', function ($any = 'empty') {
+        dump($any, \request()->all(), \request()->allFiles());
+    });
+});
+
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], static function () {
     Route::rpc('endpoint', [
-        TennisProcedure::class,
-        UserProcedure::class,
+        Procedures\TennisProcedure::class,
+        Procedures\UserProcedure::class,
     ])->name('rpc.endpoint');
 });

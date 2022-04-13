@@ -67,6 +67,7 @@ return [
             'use_ssl'           => env('OSS_SSL', false),              // 选填, 是否使用HTTPS
             'prefix'            => env('OSS_PREFIX', ''),              // 选填, 统一存储地址前缀
             'reverse_proxy'     => env('OSS_REVERSE_PROXY', false),    // 选填, 域名是否使用NGINX代理绑定
+            'cdn_url'           => env('OSS_CDN_URL', null),           // 选填, CDN加速地址
         ],
 
     ],
