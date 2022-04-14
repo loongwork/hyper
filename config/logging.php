@@ -114,6 +114,33 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'loki' => [
+            'driver'    => 'custom',
+            'level'     => env('LOG_LEVEL', 'debug'),
+            'via'       => \App\Logging\LokiNoFailureHandler::class,
+            'formatter_with' => [
+                'labels' => ['app' => 'hyper'],
+                'context' => [],
+                'systemName' => env('LOKI_SYSTEM_NAME', ''),
+                'extraPrefix' => env('LOKI_EXTRA_PREFIX', ''),
+                'contextPrefix' => env('LOKI_CONTEXT_PREFIX', '')
+            ],
+            'handler_with'   => [
+                'apiConfig'  => [
+                    'entrypoint'  => env('LOKI_ENTRYPOINT', 'http://localhost:3100'),
+                    'context'     => [],
+                    'labels'      => [],
+                    'client_name' => '',
+                    'auth' => [
+                        'basic' => [
+                            env('LOKI_AUTH_BASIC_USER', ''),
+                            env('LOKI_AUTH_BASIC_PASSWORD', '')
+                        ],
+                    ]
+                ],
+            ],
+        ]
     ],
 
 ];
