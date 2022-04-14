@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class FaweController extends Controller
 {
-    public function upload(Request $request)
+    /**
+     * FAWE 上传文件
+     */
+    public function upload(Request $request): Response
     {
         $id = null;
         foreach ($request->input() as $key => $value) {
@@ -36,12 +41,18 @@ class FaweController extends Controller
         return response("文件上传成功，请点击以下链接以下载：{$path}\n请忽视下方的链接，那是插件本身的设计缺陷，无法去除。");
     }
 
-    public function download(Request $request, string $file = null)
+    /**
+     * FAWE 下载文件
+     */
+    public function download(Request $request, string $file = null): Response|RedirectResponse
     {
+        // 文件为空代表是 FAWE 远程加载请求
         if (!is_null($file)) {
-            return file_get_contents("https://fawe.escraft.net/faweupload/uploads/{$file}");
+            return response(file_get_contents("https://fawe.escraft.net/faweupload/uploads/{$file}"));
 //            return Storage::disk('oss')->download("schematics/$file");
         }
+
+        // 或者为用户下载请求
 
         $id = $request->query('key');
         $type = $request->query('type');
@@ -50,7 +61,7 @@ class FaweController extends Controller
             return response('Invalid file type', 400);
         }
 
-        return redirect()->away(sprintf(
+        return response()->redirectTo(sprintf(
             'http://%s/%s/%s',
             config('filesystems.disks.oss.cdn_url'),
             Str::plural($type),
