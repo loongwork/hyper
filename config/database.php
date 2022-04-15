@@ -144,6 +144,18 @@ return [
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+        'game' => [
+            'url' => env('GAME_REDIS_URL'),
+            'host' => env('GAME_REDIS_HOST', '127.0.0.1'),
+            'username' => env('GAME_REDIS_USERNAME'),
+            'password' => env('GAME_REDIS_PASSWORD'),
+            'port' => env('GAME_REDIS_PORT', '6379'),
+            'database' => env('GAME_REDIS_DB', '0'),
+            'options' => [
+                'prefix' => env('GAME_REDIS_PREFIX', ''),
+            ],
+        ]
+
     ],
 
 ];

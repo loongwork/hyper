@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f840de65739ae7b2452c7c97a515b790",
+    "content-hash": "a9b7821925e0638c1b01aec8b90eb66b",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -3406,6 +3406,67 @@
             "time": "2022-02-10T10:16:58+00:00"
         },
         {
+            "name": "sunxyw/minecraft-protocol",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunxyw/minecraft-protocol.git",
+                "reference": "4be30448b45e06b8681e0d8e597cf6965854dca7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunxyw/minecraft-protocol/zipball/4be30448b45e06b8681e0d8e597cf6965854dca7",
+                "reference": "4be30448b45e06b8681e0d8e597cf6965854dca7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~9",
+                "xpaw/php-source-query-class": "^2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.0",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "MinecraftProtocol": "Sunxyw\\MinecraftProtocol\\Facades\\MinecraftProtocol"
+                    },
+                    "providers": [
+                        "Sunxyw\\MinecraftProtocol\\MinecraftProtocolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sunxyw\\MinecraftProtocol\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sunxyw",
+                    "email": "xy2496419818@gmail.com",
+                    "homepage": "https://www.sunxyw.xyz"
+                }
+            ],
+            "homepage": "https://github.com/sunxyw/minecraft-protocol",
+            "keywords": [
+                "laravel",
+                "minecraft",
+                "protocol"
+            ],
+            "support": {
+                "issues": "https://github.com/sunxyw/minecraft-protocol/issues",
+                "source": "https://github.com/sunxyw/minecraft-protocol/tree/v1.2.0"
+            },
+            "time": "2022-03-16T18:14:12+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v6.0.5",
             "source": {
@@ -5758,6 +5819,61 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "xpaw/php-source-query-class",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xPaw/PHP-Source-Query.git",
+                "reference": "673e572233c3ab4b70b302d648ebaf5a8d9ba32b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xPaw/PHP-Source-Query/zipball/673e572233c3ab4b70b302d648ebaf5a8d9ba32b",
+                "reference": "673e572233c3ab4b70b302d648ebaf5a8d9ba32b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.2",
+                "vimeo/psalm": "^3.12"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xPaw\\SourceQuery\\": "SourceQuery/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "description": "PHP library to query and send RCON commands to servers based on \"Source Engine Query\" protocol",
+            "homepage": "https://github.com/xPaw/PHP-Source-Query",
+            "keywords": [
+                "ark",
+                "counter-strike",
+                "csgo",
+                "gmod",
+                "minecraft",
+                "rcon",
+                "rust",
+                "starbound",
+                "team fortress"
+            ],
+            "support": {
+                "source": "https://github.com/xPaw/PHP-Source-Query/tree/2.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/xPaw",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-04T08:20:42+00:00"
         }
     ],
     "packages-dev": [
