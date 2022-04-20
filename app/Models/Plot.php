@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -7,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 
+/**
+ * @mixin IdeHelperPlot
+ */
 class Plot extends Model
 {
     use HasFactory;
@@ -21,8 +26,6 @@ class Plot extends Model
 
     /**
      * Get the player relationship.
-     *
-     * @return BelongsTo
      */
     public function player(): BelongsTo
     {
@@ -31,8 +34,6 @@ class Plot extends Model
 
     /**
      * Get the plot world relationship.
-     *
-     * @return BelongsTo
      */
     public function plotWorld(): BelongsTo
     {

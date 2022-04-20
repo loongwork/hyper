@@ -61,6 +61,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the profile relationship.
+     */
+    public function profiles(): BelongsToJson
+    {
+        return $this->belongsToJson(PlayerProfile::class, 'profile_ids');
+    }
+
+    /**
      * Bootstrap the model and its traits.
      */
     protected static function boot(): void
@@ -70,15 +78,5 @@ class User extends Authenticatable
         self::creating(static function (self $user) {
             $user->{$user->getKeyName()} = (new Client())->generateId(21, Client::MODE_DYNAMIC);
         });
-    }
-
-    /**
-     * Get the profile relationship.
-     *
-     * @return BelongsToJson
-     */
-    public function profiles(): BelongsToJson
-    {
-        return $this->belongsToJson(PlayerProfile::class, 'profile_ids');
     }
 }

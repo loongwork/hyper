@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\HashAlgorithm;
@@ -10,11 +12,21 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 use Staudenmeir\EloquentJsonRelations\Relations\HasManyJson;
 
+/**
+ * @mixin IdeHelperPlayerProfile
+ */
 class PlayerProfile extends Model
 {
     use HasFactory;
     use ReadOnlyTrait;
     use HasJsonRelationships;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The table associated with the model.
@@ -42,16 +54,7 @@ class PlayerProfile extends Model
     ];
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * Get the user relationship.
-     *
-     * @return HasManyJson
      */
     public function user(): HasManyJson
     {
@@ -60,8 +63,6 @@ class PlayerProfile extends Model
 
     /**
      * Get the plots relationship.
-     *
-     * @return HasMany
      */
     public function plots(): HasMany
     {
