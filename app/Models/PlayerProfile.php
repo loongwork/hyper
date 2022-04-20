@@ -5,7 +5,8 @@ namespace App\Models;
 use App\Enums\HashAlgorithm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use MichaelAChrisco\readonly\ReadOnlyTrait;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 use Staudenmeir\EloquentJsonRelations\Relations\HasManyJson;
 
@@ -55,5 +56,15 @@ class PlayerProfile extends Model
     public function user(): HasManyJson
     {
         return $this->hasManyJson(User::class, 'profile_ids')->limit(1);
+    }
+
+    /**
+     * Get the plots relationship.
+     *
+     * @return HasMany
+     */
+    public function plots(): HasMany
+    {
+        return $this->hasMany(Plot::class, 'owner', 'uuid');
     }
 }
