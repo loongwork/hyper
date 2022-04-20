@@ -16,8 +16,9 @@
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.7",
+        "michaelachrisco/readonly": "^0.40.0",
         "sajya/server": "^5.0",
-        "sunxyw/minecraft-protocol": "^1.2"
+        "staudenmeir/eloquent-json-relations": "^1.6"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

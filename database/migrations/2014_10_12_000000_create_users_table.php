@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('nickname', 20)->nullable();
             $table->unsignedBigInteger('qq')->nullable();
+            $table->json('profile_ids')->default('[]');
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('become_member_at')->nullable();
             $table->timestamp('whitelisted_at')->nullable();

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
+use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
 
 /**
  * @mixin IdeHelperUser
@@ -18,6 +20,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use HasJsonRelationships;
 
     /**
      * The "type" of the primary key ID.
@@ -50,6 +53,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'profile_ids' => 'array',
         'activated_at' => 'datetime',
         'become_member_at' => 'datetime',
         'whitelisted_at' => 'datetime',
@@ -66,5 +70,15 @@ class User extends Authenticatable
         self::creating(static function (self $user) {
             $user->{$user->getKeyName()} = (new Client())->generateId(21, Client::MODE_DYNAMIC);
         });
+    }
+
+    /**
+     * Get the profile relationship.
+     *
+     * @return BelongsToJson
+     */
+    public function profiles(): BelongsToJson
+    {
+        return $this->belongsToJson(PlayerProfile::class, 'profile_ids');
     }
 }
