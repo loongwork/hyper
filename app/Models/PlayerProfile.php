@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
-use Staudenmeir\EloquentJsonRelations\Relations\HasManyJson;
 
 /**
  * @mixin IdeHelperPlayerProfile
@@ -56,7 +55,7 @@ class PlayerProfile extends Model
     /**
      * Get the user relationship.
      */
-    public function user(): HasManyJson
+    public function user(): HasMany
     {
         return $this->hasManyJson(User::class, 'profile_ids')->limit(1);
     }

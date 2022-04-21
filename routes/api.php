@@ -33,5 +33,6 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], static functi
         Procedures\TennisProcedure::class,
         Procedures\UserProcedure::class,
         Procedures\GameProcedure::class,
+        Procedures\AccountLinkProcedure::class,
     ])->name('rpc.endpoint');
 });
